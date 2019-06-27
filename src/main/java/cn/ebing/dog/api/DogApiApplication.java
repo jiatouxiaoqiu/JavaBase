@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DogApiApplication {
 
 	public static void main(String[] args) {
+		System.out.println("-- DogApiApplication 准备启动 --");
 		SpringApplication.run(DogApiApplication.class, args);
+		System.out.println("-- DogApiApplication 启动完成 --");
 	}
 
 }
