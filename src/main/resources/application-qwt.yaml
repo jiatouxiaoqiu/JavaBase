@@ -1,1 +1,9 @@
-
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tob-game?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: mRVHePdfa4Z3X0ewfctefpZuqDrSbtINR4VRslgA2s
+  redis:
+    host: 127.0.0.1 # redis Hostname
+    port: 6379 # redis端口
+    database: 2

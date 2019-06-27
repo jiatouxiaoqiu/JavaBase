@@ -16,9 +16,9 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'idea'
 
-group = 'cn.codemao'
+group = 'cn.ebing'
 version = '0.0.1-SNAPSHOT'
-description = "arena_game_service"
+description = "dog"
 
 sourceCompatibility = javaVersion
 targetCompatibility = javaVersion
@@ -27,11 +27,10 @@ tasks.withType(JavaCompile) {
 }
 
 jar {
-    baseName = 'arena_game_service'
+    baseName = 'dog'
     version = 'gradle'
     manifest {
-        attributes("Main-Class": "cn.codemao.ArenaApplication",
-                "Implementation-Title": "Gradle")
+        attributes("Main-Class": "cn.ebing.dog.api.DogApiApplication", "Implementation-Title": "Gradle")
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
@@ -40,7 +39,6 @@ jar {
 
 repositories {
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-    maven { url "https://nexus.codemao.cn/nexus/content/repositories/releases/" }
     mavenLocal()
     mavenCentral()
 }

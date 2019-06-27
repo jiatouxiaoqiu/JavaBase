@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-scope="./src/main/resources/db/migration"
+scope="./src/main/resources/db/mysql/migration"
 
 function info {
     echo -e "\033[42;30m INFO \033[40;32m\ue0b0\033[0m" $@

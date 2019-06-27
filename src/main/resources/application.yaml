@@ -1,1 +1,83 @@
+server:
+  port: 4500
+logging:
+  level:
+    root: info
+    cn.ebing.dog: debug
+spring:
+  application:
+    name: service-tob-game
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    sql-script-encoding: UTF-8
+    name: hikariCP
+    hikari:
+      maximum-pool-size: 10
+      auto-commit: true
+      connection-test-query: SELECT 1
+      connection-timeout: 2000
+      validation-timeout: 1000
+      idle-timeout: 10000
+      max-lifetime: 30000
+      connection-init-sql: "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;"
+      data-source-properties:
+        serverTimezone: GMT+8
+        useTimezone: true
+        zeroDateTimeBehavior: round
+        characterEncoding: utf8
+        cachePrepStmts: true
+        prepStmtCacheSize: 128
+        prepStmtCacheSqlLimit: 1024
+        useSSL: false
+        useUnicode: true
+mybatis:
+  mapper-locations: "db/mysql/mapper/*.xml"
+  type-aliases-package: cn.codemao.tob.domain.entity
+  configuration:
+      use-actual-param-name: true
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
 
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout: 0
+  ConnectTimeout: 6000
+hystrix:
+  threadpool:
+    default:
+      coreSize: 40
+      maximumSize: 200
+      maxQueueSize: 200
+      queueSizeRejectionThreshold: 20000
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+
+security:
+  basic:
+    enabled: false
+
+cors:
+  enabled: true
+  mapping:
+    -
+      path: "/**"
+      allowed-origins: "*"
+
+flyway:
+  enabled: true
+  baseline-on-migrate: true
+  locations: "db/mysql/migration"
+  schemas:
+    - dog
