@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserResponse> listUsers() {
 		List<UserEntity> users = userMapper.listAll();
-		List<UserResponse> list = new ArrayList();
+		List<UserResponse> list = new ArrayList<UserResponse>();
 		users.forEach(user -> {
 			list.add(new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt()));
 		});
