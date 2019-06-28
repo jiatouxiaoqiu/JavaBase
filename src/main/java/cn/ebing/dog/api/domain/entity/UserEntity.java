@@ -1,8 +1,11 @@
 package cn.ebing.dog.api.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserEntity {
+public class UserEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
@@ -10,20 +13,28 @@ public class UserEntity {
 
 	private Integer age;
 
-	private Integer sex;
+	public UserEntity() { } // 需要加一个无参构造
 
-	private Boolean marry;
-
-	public UserEntity(String name, Integer age, Integer sex, Boolean marry) {
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-		this.marry = marry;
-	}
+	private Boolean sex;
 
 	private Date createdAt;
 
 	private Date updatedAt;
+
+	public UserEntity(Integer id, String name, Integer age, Boolean sex, Date createdAt, Date updatedAt) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
+	public UserEntity(String name, Integer age, Boolean sex) {
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+	}
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -53,14 +64,6 @@ public class UserEntity {
 		this.age = age;
 	}
 
-	public void setSex(Integer sex) {
-		this.sex = sex;
-	}
-
-	public void setMarry(Boolean marry) {
-		this.marry = marry;
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -73,11 +76,7 @@ public class UserEntity {
 		return age;
 	}
 
-	public Integer getSex() {
+	public Boolean getSex() {
 		return sex;
-	}
-
-	public Boolean getMarry() {
-		return marry;
 	}
 }

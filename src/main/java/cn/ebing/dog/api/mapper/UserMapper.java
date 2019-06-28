@@ -1,15 +1,15 @@
 package cn.ebing.dog.api.mapper;
 
 import cn.ebing.dog.api.domain.entity.UserEntity;
-//import org.apache.ibatis.annotations.Mapper;
-
+import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
-//@Mapper
+@Mapper
 public interface UserMapper {
-	int save(UserEntity entity);
 
-	int updateById(UserEntity entity);
+	int addOne(UserEntity entity);
+
+	int updateOne(UserEntity entity);
 
 	void deleteById(Integer id);
 

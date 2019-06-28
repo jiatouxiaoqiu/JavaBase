@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResponse getUserById(Integer id) {
 		UserEntity user = userMapper.getById(id);
-		return new UserResponse(user.getId(), user.getName(), user.getSex(), user.getAge(), user.getMarry(), user.getCreatedAt());
+		return new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt());
 	}
 
 //	@Override
@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int saveUser(UserRequest request) {
-		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex(), request.getMarry());
-		return userMapper.save(user);
+		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
+		return userMapper.addOne(user);
 	}
 
 //	@Override

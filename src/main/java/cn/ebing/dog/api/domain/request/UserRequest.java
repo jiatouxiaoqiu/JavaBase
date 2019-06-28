@@ -6,10 +6,7 @@ public class UserRequest {
 
 	private Integer age;
 
-	private Integer sex;
-
-	private Boolean marry;
-
+	private Boolean sex;
 
 	public void setName(String name) {
 		this.name = name;
@@ -19,14 +16,9 @@ public class UserRequest {
 		this.age = age;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(Boolean sex) {
 		this.sex = sex;
 	}
-
-	public void setMarry(Boolean marry) {
-		this.marry = marry;
-	}
-
 
 	public String getName() {
 		return name;
@@ -36,11 +28,7 @@ public class UserRequest {
 		return age;
 	}
 
-	public Integer getSex() {
+	public Boolean getSex() {
 		return sex;
-	}
-
-	public Boolean getMarry() {
-		return marry;
 	}
 }

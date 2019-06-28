@@ -10,18 +10,15 @@ public class UserResponse {
 
 	private Integer age;
 
-	private Integer sex;
-
-	private Boolean marry;
+	private Boolean sex;
 
 	private Date createdAt;
 
-	public UserResponse(Integer id, String name, Integer age, Integer sex, Boolean marry, Date createdAt) {
+	public UserResponse(Integer id, String name, Integer age, Boolean sex, Date createdAt) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.sex = sex;
-		this.marry = marry;
 		this.createdAt = createdAt;
 	}
 
@@ -45,12 +42,8 @@ public class UserResponse {
 		this.age = age;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(Boolean sex) {
 		this.sex = sex;
-	}
-
-	public void setMarry(Boolean marry) {
-		this.marry = marry;
 	}
 
 	public Integer getId() {
@@ -65,11 +58,7 @@ public class UserResponse {
 		return age;
 	}
 
-	public Integer getSex() {
+	public Boolean getSex() {
 		return sex;
-	}
-
-	public Boolean getMarry() {
-		return marry;
 	}
 }

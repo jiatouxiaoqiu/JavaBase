@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.bing.dog.api.mapper.UserMapper">
+<mapper namespace="cn.ebing.dog.api.mapper.UserMapper">
 
     <resultMap id="entityMap" type="UserEntity">
+        <result property="id" column="id"/>
         <result property="sex" column="sex"/>
         <result property="name" column="name"/>
         <result property="age" column="age"/>
@@ -27,6 +28,13 @@
         FROM
         <include refid="tableName"/>
         WHERE `id` = #{id}
+    </select>
+
+    <select id="listAll" resultMap="entityMap">
+        SELECT
+        <include refid="selectColumns"/>
+        FROM
+        <include refid="tableName"/>
     </select>
 
     <insert id="addOne" useGeneratedKeys="true" keyProperty="id" parameterType="UserEntity">

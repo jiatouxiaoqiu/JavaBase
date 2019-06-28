@@ -1,6 +1,5 @@
 package cn.ebing.dog.api.controller;
 
-import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +27,6 @@ public class EasyController {
 		return "wo zai shenzhen，邱文韬";
 	}
 
-	@Test
 	@ResponseBody
 	@PostMapping("/qiuw")
 	public String wangbn() {
