@@ -20,6 +20,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResponse getUserById(Integer id) {
 		UserEntity user = userMapper.getById(id);
+		if (user == null) {
+			throw new RuntimeException("USER 不存在");
+		}
 		return new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt());
 	}
 
