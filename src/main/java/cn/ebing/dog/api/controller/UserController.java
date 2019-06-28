@@ -29,11 +29,12 @@ public class UserController {
 		return userService.getUserById(userId);
 	}
 
-//	@GetMapping("")
-//	public List<UserResponse> listUsers() {
-//		logger.debug("== 查询全部用户接口 ==");
-//		return userService.listUsers();
-//	}
+	@ResponseBody
+	@GetMapping
+	public List<UserResponse> listUsers() {
+		logger.debug("== 查询全部用户接口 ==");
+		return userService.listUsers();
+	}
 
 
 	@ResponseBody
@@ -45,22 +46,22 @@ public class UserController {
 		return userService.saveUser(request);
 	}
 
-//	@ResponseBody
-//	@PutMapping("/{user_id}")
-//	public Integer update(
-//		@PathVariable("user_id") Integer userId,
-//		@RequestBody UserRequest request
-//	) {
-//		System.out.println("-- 更新 user 接口请求开始 --");
-//		return userService.updateUser(userId, request);
-//	}
-//
-//	@ResponseBody
-//	@DeleteMapping("/{user_id}")
-//	public void delete(
-//			@PathVariable("user_id") Integer userId
-//	) {
-//		System.out.println("-- 删除 user 接口请求开始 --");
-//		userService.deleteUserById(userId);
-//	}
+	@ResponseBody
+	@PutMapping("/{user_id}")
+	public Integer update(
+		@PathVariable("user_id") Integer userId,
+		@RequestBody UserRequest request
+	) {
+		System.out.println("-- 更新 user 接口请求开始 --");
+		return userService.updateUser(userId, request);
+	}
+
+	@ResponseBody
+	@DeleteMapping("/{user_id}")
+	public void delete(
+			@PathVariable("user_id") Integer userId
+	) {
+		System.out.println("-- 删除 user 接口请求开始 --");
+		userService.deleteUserById(userId);
+	}
 }

@@ -13,13 +13,20 @@ public class UserEntity implements Serializable {
 
 	private Integer age;
 
-	public UserEntity() { } // 需要加一个无参构造
-
 	private Boolean sex;
+
+	public UserEntity(Integer id, String name, Integer age, Boolean sex) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+	}
 
 	private Date createdAt;
 
 	private Date updatedAt;
+
+	public UserEntity() { } // 需要加一个无参构造
 
 	public UserEntity(Integer id, String name, Integer age, Boolean sex, Date createdAt, Date updatedAt) {
 		this.id = id;

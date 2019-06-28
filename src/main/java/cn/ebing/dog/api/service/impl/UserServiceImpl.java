@@ -8,6 +8,9 @@ import cn.ebing.dog.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,12 +23,15 @@ public class UserServiceImpl implements UserService {
 		return new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt());
 	}
 
-//	@Override
-//	public List<UserResponse> listUsers() {
-//		List<UserEntity> users = userMapper.listAll();
-//		users.forEach();
-//		return arenaDownloadDao.list(map);
-//	}
+	@Override
+	public List<UserResponse> listUsers() {
+		List<UserEntity> users = userMapper.listAll();
+		List<UserResponse> list = new ArrayList();
+		users.forEach(user -> {
+			list.add(new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt()));
+		});
+		return list;
+	}
 
 	@Override
 	public int saveUser(UserRequest request) {
@@ -33,13 +39,14 @@ public class UserServiceImpl implements UserService {
 		return userMapper.addOne(user);
 	}
 
-//	@Override
-//	public int update(ArenaDownloadDO arenaDownload) {
-//		return arenaDownloadDao.update(arenaDownload);
-//	}
-//
-//	@Override
-//	public int remove(Integer id) {
-//		return arenaDownloadDao.remove(id);
-//	}
+	@Override
+	public int updateUser(Integer id, UserRequest request) {
+		UserEntity user = new UserEntity(id, request.getName(), request.getAge(), request.getSex());
+		return userMapper.updateOne(user);
+	}
+
+	@Override
+	public void deleteUserById(Integer id) {
+		userMapper.deleteById(id);
+	}
 }
