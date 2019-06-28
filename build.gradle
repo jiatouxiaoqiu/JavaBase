@@ -78,7 +78,6 @@ dependencies {
     compile(group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5') {
         exclude(module: 'commons-logging')
     }
-    compile 'com.alipay.sdk:alipay-sdk-java:3.3.49.ALL'
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.9.RELEASE') {
         exclude(module: 'commons-logging')
     }

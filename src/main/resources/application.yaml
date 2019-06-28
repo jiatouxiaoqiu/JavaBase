@@ -1,12 +1,12 @@
 server:
-  port: 4500
+  port: 4949
 logging:
   level:
     root: info
     cn.ebing.dog: debug
 spring:
   application:
-    name: service-tob-game
+    name: dog-api
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -33,40 +33,12 @@ spring:
         useUnicode: true
 mybatis:
   mapper-locations: "db/mysql/mapper/*.xml"
-  type-aliases-package: cn.codemao.tob.domain.entity
+  type-aliases-package: cn.ebing.dog.api.domain.entity
   configuration:
       use-actual-param-name: true
 pagehelper:
   helper-dialect: mysql
   support-methods-arguments: true
-
-feign:
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
-  hystrix:
-    enabled: true
-ribbon:
-  ReadTimeout: 0
-  ConnectTimeout: 6000
-hystrix:
-  threadpool:
-    default:
-      coreSize: 40
-      maximumSize: 200
-      maxQueueSize: 200
-      queueSizeRejectionThreshold: 20000
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 6000
-
-security:
-  basic:
-    enabled: false
 
 cors:
   enabled: true

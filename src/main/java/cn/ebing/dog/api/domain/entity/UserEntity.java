@@ -14,6 +14,13 @@ public class UserEntity {
 
 	private Boolean marry;
 
+	public UserEntity(String name, Integer age, Integer sex, Boolean marry) {
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+		this.marry = marry;
+	}
+
 	private Date createdAt;
 
 	private Date updatedAt;

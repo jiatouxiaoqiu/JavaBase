@@ -1,4 +1,20 @@
 package cn.ebing.dog.api.mapper;
 
-public class UserMapper {
+import cn.ebing.dog.api.domain.entity.UserEntity;
+//import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+//@Mapper
+public interface UserMapper {
+	int save(UserEntity entity);
+
+	int updateById(UserEntity entity);
+
+	void deleteById(Integer id);
+
+	UserEntity getById(Integer id);
+
+	List<UserEntity> listAll();
+
 }
