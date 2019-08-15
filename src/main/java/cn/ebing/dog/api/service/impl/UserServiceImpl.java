@@ -5,6 +5,8 @@ import cn.ebing.dog.api.domain.request.UserRequest;
 import cn.ebing.dog.api.domain.response.UserResponse;
 import cn.ebing.dog.api.mapper.UserMapper;
 import cn.ebing.dog.api.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +16,19 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+	private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
 	@Autowired
 	private UserMapper userMapper;
 
 	@Override
 	public UserResponse getUserById(Integer id) {
+		logger.debug("开始进行 getUserById");
 		UserEntity user = userMapper.getById(id);
 		if (user == null) {
-			throw new RuntimeException("USER 不存在");
+			throw new RuntimeException("USER 不存在----");
 		}
+		logger.debug("找到了数据，准备返回");
 		return new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt());
 	}
 

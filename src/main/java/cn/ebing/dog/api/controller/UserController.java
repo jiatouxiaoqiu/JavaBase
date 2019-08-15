@@ -36,6 +36,13 @@ public class UserController {
 		return userService.listUsers();
 	}
 
+//	@ResponseBody
+//	@GetMapping
+//	public login() {
+//		logger.debug("== 查询全部用户接口 ==");
+//		return userService.listUsers();
+//	}
+
 
 	@ResponseBody
 	@PostMapping
