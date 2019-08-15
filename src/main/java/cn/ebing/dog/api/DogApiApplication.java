@@ -12,9 +12,8 @@ public class DogApiApplication {
 
 	public static void main(String[] args) {
 		System.out.println("===== DogApiApplication 准备启动 =====");
-		byte [] b1 = new byte[4 * 1024 * 1024];
-//		SpringApplication.run(DogApiApplication.class, args);
-		System.out.println("===== DogApiApplica tion 启动完成 =====");
+		SpringApplication.run(DogApiApplication.class, args);
+		System.out.println("===== DogApiApplication 启动完成 =====");
 	}
 
 }
