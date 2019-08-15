@@ -23,11 +23,11 @@ public class EasyController {
 		System.out.println("接口请求来啦~~~");
 		Integer a = 1;
 		if (a > 1) {
-			System.out.println("邱文韬~~~");
+			System.out.println("11~~~");
 		} else {
-			System.out.println("qiuhengbin~~~");
+			System.out.println("11~~~");
 		}
-		return "wo zai shenzhen，邱文韬";
+		return "wo zai 111，1";
 	}
 
 	@ResponseBody
