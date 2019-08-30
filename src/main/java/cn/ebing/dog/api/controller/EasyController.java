@@ -3,6 +3,9 @@ package cn.ebing.dog.api.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,10 +13,17 @@ import java.util.Set;
 @RequestMapping("/easy")
 public class EasyController {
 
+	private static final ThreadLocal<DateFormat> df = new ThreadLocal<DateFormat>() {
+		@Override
+		protected DateFormat initialValue() {
+			return new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+		}
+	};
+
 	@ResponseBody
 	@GetMapping("/hello")
 	public String list() {
-		return "hello world";
+		return df.get().format(new Date());
 	}
 
 
