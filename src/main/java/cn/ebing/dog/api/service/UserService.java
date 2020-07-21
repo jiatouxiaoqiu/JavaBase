@@ -11,4 +11,5 @@ public interface UserService {
 	List<UserResponse> listUsers();
 	UserResponse getUserById(Integer id);
 	void deleteUserById(Integer id);
+	void heroTest();
 }
