@@ -7,7 +7,7 @@ spring:
     name: dog-api
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: com.mysql.jdbc.Driver
     sql-script-encoding: UTF-8
     name: hikariCP
     hikari:
@@ -46,8 +46,11 @@ cors:
       allowed-origins: "*"
 
 flyway:
-  enabled: true
+  enabled: false
   baseline-on-migrate: true
   locations: "db/mysql/migration"
   schemas:
     - dog
+
+redis:
+  limit: 1

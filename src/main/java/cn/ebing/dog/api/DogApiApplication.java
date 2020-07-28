@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
+//@ComponentScan(value = "com.crossoverjie.distributed.intercept")
 @MapperScan("cn.ebing.dog.api.mapper")
 @SpringBootApplication
 public class DogApiApplication {

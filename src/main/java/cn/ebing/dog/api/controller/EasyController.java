@@ -1,5 +1,7 @@
 package cn.ebing.dog.api.controller;
 
+import com.crossoverjie.distributed.annotation.SpringControllerLimit;
+import org.springframework.boot.autoconfigure.klock.annotation.Klock;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,18 +28,23 @@ public class EasyController {
 		return df.get().format(new Date());
 	}
 
-
-	@ResponseBody
-	@GetMapping("/qiuwentao")
-	public String wangbadan() {
-		System.out.println("接口请求来啦~~~");
-		Integer a = 1;
-		if (a > 1) {
-			System.out.println("11~~~");
-		} else {
-			System.out.println("11~~~");
+	@Klock(waitTime = Long.MAX_VALUE)
+	@GetMapping("/klock")
+	public String getValue(String param) throws Exception {
+		if ("sleep".equals(param)) {
+			//线程休眠或者断点阻塞，达到一直占用锁的测试效果
+			Thread.sleep(1000 * 50);
+			return "Klock value";
 		}
-		return "wo zai 111，1";
+		return "success";
+	}
+
+
+	@SpringControllerLimit(errorCode = 401,errorMsg = "request has limited")
+	@ResponseBody
+	@GetMapping("/SpringControllerLimit")
+	public String redisLimit() {
+		return "SpringControllerLimit";
 	}
 
 	@ResponseBody
