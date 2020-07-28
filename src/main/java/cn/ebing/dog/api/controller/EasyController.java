@@ -28,7 +28,7 @@ public class EasyController {
 		return df.get().format(new Date());
 	}
 
-	@Klock(waitTime = Long.MAX_VALUE)
+	@Klock(waitTime = Long.MAX_VALUE, name = "klock_name")
 	@GetMapping("/klock")
 	public String getValue(String param) throws Exception {
 		if ("sleep".equals(param)) {
