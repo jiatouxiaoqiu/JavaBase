@@ -57,13 +57,14 @@ public class EasyController {
 		@RequestParam(value = "corePoolSize") int corePoolSize,
 		@RequestParam(value = "sleepTimeInMicroSecond") int sleepTimeInMicroSecond
 	) {
-		for (int i = 0; i < corePoolSize; i++) {
-			try {
-				consumerQueueThreadPool.execute(new RedisLockThread("name" + i, sleepTimeInMicroSecond));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		consumerQueueThreadPool.execute(new RedisLockThread("name" + corePoolSize, sleepTimeInMicroSecond));
+//		for (int i = 0; i < corePoolSize; i++) {
+//			try {
+//				consumerQueueThreadPool.execute(new RedisLockThread("name" + i, sleepTimeInMicroSecond));
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		return "success";
 	}
 
