@@ -1,6 +1,7 @@
 package cn.ebing.dog.api.controller;
 
 import cn.ebing.dog.api.config.threadpool.AsyncTask;
+import cn.ebing.dog.api.thread.RedisLockThread;
 import com.crossoverjie.distributed.annotation.SpringControllerLimit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +16,12 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.locks.LockSupport;
 
 @Controller
 @RequestMapping("/easy")
 public class EasyController {
 
-	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final ThreadLocal<DateFormat> df = new ThreadLocal<DateFormat>() {
 		@Override
@@ -51,20 +51,18 @@ public class EasyController {
 	}
 
 	@ResponseBody
-	@Klock(waitTime = 1000, name = "klock_name")
-	@GetMapping("/klock")
+	@Klock(waitTime = 3000, name = "clock_name")
+	@GetMapping("/redis-clock")
 	public String getValue(
-		@RequestParam(value = "corePoolSize") int corePoolSize
+		@RequestParam(value = "corePoolSize") int corePoolSize,
+		@RequestParam(value = "sleepTimeInMicroSecond") int sleepTimeInMicroSecond
 	) {
-		if ("sleep".equals(corePoolSize)) {
-			LockSupport.parkNanos(5000);
+		for (int i = 0; i < corePoolSize; i++) {
 			try {
-				Thread.sleep(5000);
+				consumerQueueThreadPool.execute(new RedisLockThread("name" + i, sleepTimeInMicroSecond));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			//线程休眠或者断点阻塞，达到一直占用锁的测试效果
-			return "Klock value";
 		}
 		return "success";
 	}
