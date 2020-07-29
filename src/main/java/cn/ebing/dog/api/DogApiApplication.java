@@ -3,10 +3,11 @@ package cn.ebing.dog.api;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@EnableAsync
 @EnableTransactionManagement
-//@ComponentScan(value = "com.crossoverjie.distributed.intercept")
 @MapperScan("cn.ebing.dog.api.mapper")
 @SpringBootApplication
 public class DogApiApplication {
