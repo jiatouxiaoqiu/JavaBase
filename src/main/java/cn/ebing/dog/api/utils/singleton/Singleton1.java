@@ -1,4 +1,4 @@
-package cn.ebing.dog.api.utils;
+package cn.ebing.dog.api.utils.singleton;
 
 /**
  * 饿汉式

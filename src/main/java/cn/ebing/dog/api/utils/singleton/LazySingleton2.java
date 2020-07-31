@@ -1,4 +1,4 @@
-package cn.ebing.dog.api.utils;
+package cn.ebing.dog.api.utils.singleton;
 
 /**
  * 内部类的加载机制

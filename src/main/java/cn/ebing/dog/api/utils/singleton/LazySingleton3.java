@@ -1,4 +1,4 @@
-package cn.ebing.dog.api.utils;
+package cn.ebing.dog.api.utils.singleton;
 
 import java.io.Serializable;
 
