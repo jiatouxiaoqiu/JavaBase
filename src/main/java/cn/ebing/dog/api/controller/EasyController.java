@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 
 @Controller
@@ -76,29 +74,24 @@ public class EasyController {
 		return "SpringControllerLimit";
 	}
 
+	String overload(String a) {
+		return a + "aa";
+	}
+
+	String overload(String a, String b) {
+		return a + b + "aa";
+	}
+
+	int overload(String a, int b) {
+		return 1 + b;
+	}
+
 	@ResponseBody
-	@PostMapping("/set")
-	public String set() {
-		Set<Integer> set1 = new HashSet<>();
-
-		for (int i =0; i<100; i++) {
-			set1.add(i);
-			set1.remove(i-1);
-		}
-
-		System.out.println(set1.size());
-
-		Set<Short> set2 = new HashSet<>();
-
-		for (short i =0; i<100; i++) {
-			set2.add(i);
-			set2.remove(i-1);
-		}
-
-		System.out.println(set2.size());
-
-		Object i = 1 == 1 ? new Integer(3) : new Float(1);
-		System.out.println(i);
+	@PostMapping("/overload")
+	public String overload() {
+		overload("a");
+		overload("a", "b");
+		overload("a", 1);
 		return "success";
 	}
 }
