@@ -36,8 +36,10 @@ public class EasyController {
 
 	@ResponseBody
 	@GetMapping("/asyncTask")
-	public String asyncTask() {
-		for (int i = 0; i < 10; i++) {
+	public String asyncTask(
+		@RequestParam int length
+	) {
+		for (int i = 0; i < length; i++) {
 			try {
 				asyncTask.doTask1(i);
 			} catch (Exception e) {

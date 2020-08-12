@@ -12,7 +12,7 @@ public class AsyncTask {
 	@Async("myTaskAsyncPool")  //myTaskAsynPool即配置线程池的方法名，此处如果不写自定义线程池的方法名，会使用默认的线程池
 	public void doTask1(int i) throws InterruptedException{
 		logger.info("Task" + i + " started");
-		Thread.sleep(500);
+		Thread.sleep(7000);
 		logger.info("Task" + i + " end");
 	}
 }
