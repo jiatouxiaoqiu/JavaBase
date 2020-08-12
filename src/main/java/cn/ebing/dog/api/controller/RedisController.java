@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -36,9 +38,10 @@ public class RedisController {
 	 * 模拟并发测试加锁和不加锁
 	 * @return
 	 */
+	@ResponseBody
 	@GetMapping("/test")
 	@ApiOperation(value = "模拟并发测试加锁和不加锁")
-	public void lock(){
+	public String lock(){
 		// 计数器
 		final CountDownLatch countDownLatch = new CountDownLatch(1);
 		for (int i = 0; i < threadNum; i ++) {
@@ -48,6 +51,26 @@ public class RedisController {
 		}
 		// 释放所有线程
 		countDownLatch.countDown();
+		return "success";
+	}
+
+	/**
+	 * 生成redis-key
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/key")
+	public String generateKey(
+		@RequestParam Boolean isLock,
+		@RequestParam Boolean isUnlock
+	) {
+		if (isLock) {
+			RedisLockUtil.lock("generateKey");
+		}
+		if (isUnlock) {
+			RedisLockUtil.unlock("generateKey");
+		}
+		return "success";
 	}
 
 	/**
