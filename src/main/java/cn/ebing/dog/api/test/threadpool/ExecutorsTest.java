@@ -1,4 +1,4 @@
-package cn.ebing.dog.api.utils.threadpool;
+package cn.ebing.dog.api.test.threadpool;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 

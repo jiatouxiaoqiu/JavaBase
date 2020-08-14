@@ -1,4 +1,4 @@
-package cn.ebing.dog.api.utils.threadpool;
+package cn.ebing.dog.api.test.threadpool;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
