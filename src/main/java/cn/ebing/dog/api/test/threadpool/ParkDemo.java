@@ -26,9 +26,9 @@ public class ParkDemo {
 		System.out.println("这里有" + parkSpace + "个停车位,先到先得啊！");
 		Semaphore semaphore = new Semaphore(parkSpace, true);
 
-		Thread threadA = new Thread(new ParkCar(1, "布加迪", semaphore), "赵四");
+		Thread threadA = new Thread(new ParkCar(1, "布加迪", semaphore), "尼古拉斯赵四");
 		Thread threadB = new Thread(new ParkCar(2, "法拉利", semaphore), "刘能、谢广坤");
-		Thread threadC = new Thread(new ParkCar(1, "劳斯莱斯", semaphore), "dog");
+		Thread threadC = new Thread(new ParkCar(1, "劳斯莱斯", semaphore), "海明威");
 
 		threadA.start();
 		threadB.start();
