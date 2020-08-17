@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutorService;
@@ -76,10 +77,6 @@ public class EasyController {
 		return "SpringControllerLimit";
 	}
 
-	String overload(String a) {
-		return a + "aa";
-	}
-
 	String overload(String a, String b) {
 		return a + b + "aa";
 	}
@@ -89,11 +86,15 @@ public class EasyController {
 	}
 
 	@ResponseBody
-	@PostMapping("/overload")
-	public String overload() {
-		overload("a");
-		overload("a", "b");
-		overload("a", 1);
+	@PostMapping("/add2space")
+	public String overload(
+		@RequestParam String add2space,
+		HttpServletRequest request
+	) {
+		System.out.println("add2space   " + add2space);
+		System.out.println("getQueryString   " + request.getQueryString());
+		System.out.println("getParameter   " + request.getParameter("add2space"));
+
 		return "success";
 	}
 }
