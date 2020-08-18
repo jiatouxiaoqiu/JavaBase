@@ -13,7 +13,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class FastFailTest {
 	public static void main(String[] args) {
-		testFor2();
+		iterable3();
+//		testFor2();
 	}
 
 	static void testFor1() {
@@ -46,10 +47,25 @@ public class FastFailTest {
 		list.add("2");
 		Iterator<String> iterable = list.iterator();
 		while (iterable.hasNext()) {
+			System.out.println("loop");
 			String next = iterable.next();
 			if (next.equals("2")) {
 				iterable.remove();
 			}
+		}
+		System.out.println("after list:" + list);
+	}
+
+
+	static void iterable3() {
+		List<String> list = new ArrayList <String>();
+		list.add("1");
+		list.add("2");
+		Iterator<String> iterable = list.iterator();
+		while (iterable.hasNext()) {
+			String next = iterable.next();
+			System.out.println("loop   " + next);
+			iterable.remove();
 		}
 		System.out.println("after list:" + list);
 	}
