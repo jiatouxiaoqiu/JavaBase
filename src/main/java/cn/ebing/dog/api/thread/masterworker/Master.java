@@ -7,6 +7,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Master {
 	//所有任务的队列
+	/**
+	 *  Diagrams -> Show Diagram
+	 */
 	private ConcurrentLinkedQueue<Task> taskQueue = new ConcurrentLinkedQueue<Task>();
 
 	//所有worker
