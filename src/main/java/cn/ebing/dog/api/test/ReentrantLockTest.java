@@ -8,25 +8,24 @@ import java.util.concurrent.locks.ReentrantLock;
  * 独占锁，按顺序执行
  */
 public class ReentrantLockTest {
-	private static final Lock lock = new ReentrantLock();
+	private static final Lock lock = new ReentrantLock(true);
 	public static void main(String[] args) {
-		Thread threadA = new Thread(() -> test(),"线程A");
-		Thread threadB = new Thread(() -> test(),"线程B");
-		Thread threadC = new Thread(() -> test(),"线程C");
-		threadA.start();
-		threadB.start();
-		threadC.start();
+		new Thread(() -> test(),"线程A").start();
+		new Thread(() -> test(),"线程B").start();
+		new Thread(() -> test(),"线程C").start();
 	}
 	public static void  test()  {
-		try {
-			lock.lock();
-			System.out.println(Thread.currentThread().getName()+"获取了锁");
-			TimeUnit.SECONDS.sleep(2);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}finally {
-			System.out.println(Thread.currentThread().getName()+"释放了锁");
-			lock.unlock();
+		for(int i=0;i<2;i++) {
+			try {
+				lock.lock();
+				System.out.println(Thread.currentThread().getName()+"获取了锁");
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}finally {
+				System.out.println(Thread.currentThread().getName()+"释放了锁");
+				lock.unlock();
+			}
 		}
 	}
 }
