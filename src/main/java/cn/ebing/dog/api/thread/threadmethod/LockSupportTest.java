@@ -17,7 +17,7 @@ public class LockSupportTest {
  * park方法可以阻塞当前线程，如果调用unpark方法或者中断当前线程，则会从park方法中返回。
  * park方法对中断方法的响应和 sleep 有一些不太一样。它不会抛出中断异常，而是从park方法直接返回，不影响线程的继续执行。
  */
-class ParkThread implements Runnable{
+class ParkThread implements Runnable {
 
 	@Override
 	public void run() {
