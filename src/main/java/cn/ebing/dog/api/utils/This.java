@@ -18,5 +18,11 @@ public class This {
 		System.out.println(this.num);
 		System.out.println(This.num);
 		System.out.println(num);
+		/**
+		 * 这就是死循环啊，为什么在多线程里面叫做「自旋」spin
+		 */
+//		for(;;) {
+//			System.out.println("xxxx");
+//		}
 	}
 }
