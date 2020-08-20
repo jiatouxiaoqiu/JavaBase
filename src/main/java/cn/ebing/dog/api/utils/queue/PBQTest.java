@@ -1,5 +1,8 @@
 package cn.ebing.dog.api.utils.queue;
 
+import java.util.Comparator;
+import java.util.concurrent.PriorityBlockingQueue;
+
 class Person {
     private int id;
     private String name;
@@ -37,10 +40,11 @@ class Person {
     }
 }
 
-public class PriorityBlockingQueueTest {
+public class PBQTest {
     public static void main(String[] args) throws InterruptedException {
 
-        PriorityBlockingQueue<Person> priorityBlockingQueue = new PriorityBlockingQueue<>(1, new Comparator<Person>() {
+        PriorityBlockingQueue<Person> priorityBlockingQueue = new PriorityBlockingQueue<Person>(1,
+                new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
                 return o1.getId() - o2.getId();
