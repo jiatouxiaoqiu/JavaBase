@@ -5,6 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Semaphore 同步工具类
+ *
+ *
  * semaphore 我们一般叫它信号量，用来控制同时访问指定资源的线程数量。
  * 在运行时，有时只会执行完线程A，其线程B和线程C都静默了,why???
  * availablePermits：获取剩余可用许可证。
