@@ -85,6 +85,9 @@ public class EasyController {
 		return 1 + b;
 	}
 
+	/**
+	 * HttpServletRequest 会把+吃掉的情况
+	 */
 	@ResponseBody
 	@PostMapping("/add2space")
 	public String overload(
