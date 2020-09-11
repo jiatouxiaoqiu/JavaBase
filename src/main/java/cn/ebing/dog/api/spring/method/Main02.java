@@ -10,7 +10,7 @@ public class Main02 {
 		/**
 		 * myService 这个不填的话，默认小驼峰？？？
 		 */
-		MyService service = (MyService) ac.getBean("wc");
+		MyService service = (MyService) ac.getBean("myService");
 		service.test(1);
 		service.test(2);
 		service.test(3);
