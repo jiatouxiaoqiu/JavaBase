@@ -1,7 +1,15 @@
 package cn.ebing.dog.api.test;
 
 public class StringTest {
+
+	/**
+	 * 这里必须是 static ，只有这样，才比 main 更早 Classlaoder 到 JVM 中
+	 */
+	private static String a = "xxx";
+
 	public static void main(String[] args) {
+
+		System.out.println(a);
 
 		//创建了两个对象，一份存在字符串常量池中，一份存在堆中
 //		String s = new String("aa"); // s 是指向
