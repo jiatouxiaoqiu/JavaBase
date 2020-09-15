@@ -26,7 +26,6 @@ public class StringIntern {
 		 * true
 		 */
 		System.out.println(s7 == s8);
-
 	}
 
 	/**
