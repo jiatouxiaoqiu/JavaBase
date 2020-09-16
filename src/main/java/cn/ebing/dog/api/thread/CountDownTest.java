@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 同步工具类。大家一起做事情，CountDownLatch 就是保证最后完成的时间，取决于那个最大的那个人
+ * 同步工具类！！！
+ * 大家一起做事情，CountDownLatch 就是保证最后完成的时间，取决于那个最大的那个人
+ * 做android的，一个页面有A,B,C三个网络请求，其中请求C需要请求A和请求B的返回数据作为参数，用过CountdownLatch解决。
  */
 public class CountDownTest {
 	static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
