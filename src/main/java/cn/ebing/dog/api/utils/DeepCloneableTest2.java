@@ -1,7 +1,16 @@
 package cn.ebing.dog.api.utils;
 
-import java.io.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+/**
+ * 说明：对象的clone方法默认是浅拷贝，若想实现深拷贝需要重写clone方法实现属性对象 的拷贝。
+ */
 public class DeepCloneableTest2 {
 
 	public static void main(String[] args) throws Exception {
