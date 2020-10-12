@@ -26,6 +26,5 @@ public class RedisLockThread implements Runnable {
 			e.printStackTrace();
 		}
 		logger.info("end run" + threadName + new Date());
-
 	}
 }

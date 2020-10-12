@@ -73,6 +73,7 @@ dependencies {
     compile 'top.crossoverjie.opensource:distributed-redis-tool:1.0.4'
     compile 'org.redisson:redisson'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '1.5.9.RELEASE'
+    compile 'com.alibaba:easyexcel:2.2.6'
 
     compile 'cn.keking:spring-boot-klock-starter:1.4-RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '1.5.9.RELEASE'
