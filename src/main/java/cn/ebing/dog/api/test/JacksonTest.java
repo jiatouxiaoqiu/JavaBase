@@ -3,6 +3,7 @@ package cn.ebing.dog.api.test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
+ *
  */
 public class JacksonTest {
     public static void main(String[] args) throws Exception {
@@ -12,11 +13,10 @@ public class JacksonTest {
                 .writeValueAsString(wanger);
         System.out.println(jsonString);
 
-
-        String jsonString2 = "{\n" +
-                "  \"name\" : \"嘻嘻\",\n" +
-                "  \"age\" : 18\n" +
-                "}";
+    /**
+     * PS：如果反序列化的对象有带参的构造方法，它必须有一个空的默认构造方法，否则将会抛出 InvalidDefinitionException 一行。
+     */
+    String jsonString2 = "{\n" + "  \"name\" : \"嘻嘻\",\n" + "  \"age\" : 18\n" + "}";
         Writer deserializedWriter = mapper.readValue(jsonString2, Writer.class);
         System.out.println(deserializedWriter);
     }
