@@ -1,23 +1,34 @@
 package cn.ebing.dog.api.test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  */
 public class JacksonTest {
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) throws Exception {
         Writer wanger = new Writer("name", 18);
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = mapper.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(wanger);
         System.out.println(jsonString);
+
+
+        String jsonString2 = "{\n" +
+                "  \"name\" : \"嘻嘻\",\n" +
+                "  \"age\" : 18\n" +
+                "}";
+        Writer deserializedWriter = mapper.readValue(jsonString2, Writer.class);
+        System.out.println(deserializedWriter);
     }
 }
 
 class Writer {
     private String name;
     private int age;
+
+    // 需要一个默认的构造函数，才能反序列化？？？？
+    public Writer() {
+    }
 
     public Writer(String name, int age) {
         this.name = name;
@@ -38,5 +49,13 @@ class Writer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Writer{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
