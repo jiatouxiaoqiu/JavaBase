@@ -1,89 +1,60 @@
 package cn.ebing.dog.api.domain.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-
 	private String name;
-
 	private Integer age;
-
 	private Boolean sex;
+	private LocalDateTime createTime;
+	private LocalDateTime updateTime;
 
-	public UserEntity(Integer id, String name, Integer age, Boolean sex) {
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-	}
-
-	private Date createdAt;
-
-	private Date updatedAt;
-
-	public UserEntity() { } // 需要加一个无参构造
-
-	public UserEntity(Integer id, String name, Integer age, Boolean sex, Date createdAt, Date updatedAt) {
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
-
-	public UserEntity(String name, Integer age, Boolean sex) {
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getAge() {
 		return age;
 	}
 
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
 	public Boolean getSex() {
 		return sex;
+	}
+
+	public void setSex(Boolean sex) {
+		this.sex = sex;
+	}
+
+	public LocalDateTime getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(LocalDateTime createTime) {
+		this.createTime = createTime;
 	}
 }
