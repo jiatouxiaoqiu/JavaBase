@@ -7,8 +7,8 @@
         <result property="sex" column="sex"/>
         <result property="name" column="name"/>
         <result property="age" column="age"/>
-        <result property="createdAt" column="created_at"/>
-        <result property="updatedAt" column="updated_at"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
     </resultMap>
 
     <sql id="selectColumns">
@@ -16,8 +16,8 @@
         `name`,
         `age`,
         `sex`,
-        `created_at`,
-        `updated_at`
+        `create_time`,
+        `update_time`
     </sql>
 
     <sql id="tableName">`tbl_user`</sql>
@@ -30,11 +30,13 @@
         WHERE `id` = #{id}
     </select>
 
-    <select id="listAll" resultMap="entityMap">
+    <select id="listByQuery" resultMap="entityMap">
         SELECT
         <include refid="selectColumns"/>
         FROM
         <include refid="tableName"/>
+        where
+          create_time >= #{minCreateTime}
     </select>
 
     <insert id="addOne" useGeneratedKeys="true" keyProperty="id" parameterType="UserEntity">

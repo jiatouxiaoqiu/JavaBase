@@ -1,5 +1,6 @@
 package cn.ebing.dog.api.controller;
 
+import cn.ebing.dog.api.domain.entity.UserEntity;
 import cn.ebing.dog.api.domain.request.UserRequest;
 import cn.ebing.dog.api.domain.response.UserResponse;
 import cn.ebing.dog.api.service.UserService;
@@ -31,7 +32,7 @@ public class UserController {
 
 	@ResponseBody
 	@GetMapping
-	public List<UserResponse> listUsers() {
+	public List<UserEntity> listUsers() {
 		logger.debug("== 查询全部用户接口 ==");
 		return userService.listUsers();
 	}

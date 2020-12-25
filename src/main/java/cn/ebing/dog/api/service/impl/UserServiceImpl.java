@@ -2,6 +2,7 @@ package cn.ebing.dog.api.service.impl;
 
 import cn.ebing.dog.api.domain.business.Hero;
 import cn.ebing.dog.api.domain.entity.UserEntity;
+import cn.ebing.dog.api.domain.query.UserQuery;
 import cn.ebing.dog.api.domain.request.UserRequest;
 import cn.ebing.dog.api.domain.response.UserResponse;
 import cn.ebing.dog.api.mapper.UserMapper;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -31,30 +33,29 @@ public class UserServiceImpl implements UserService {
 			throw new RuntimeException("USER 不存在----");
 		}
 		logger.debug("找到了数据，准备返回");
-		return new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt());
+		return null;
 	}
 
 	@Override
-	public List<UserResponse> listUsers() {
-
-		List<UserEntity> users = userMapper.listAll();
-		List<UserResponse> list = new ArrayList<UserResponse>();
-		users.forEach(user -> {
-			list.add(new UserResponse(user.getId(), user.getName(), user.getAge(), user.getSex(), user.getCreatedAt()));
-		});
-		return list;
+	public List<UserEntity> listUsers() {
+		LocalDateTime minCreateTime = LocalDateTime.now();
+		UserQuery query = new UserQuery();
+		query.setMinCreateTime(minCreateTime);
+		List<UserEntity> users = userMapper.listByQuery(query);
+		return users;
 	}
 
 	@Override
 	public int saveUser(UserRequest request) {
-		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
-		return userMapper.addOne(user);
+//		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
+//		return userMapper.addOne(user);
+		return 1;
 	}
 
 	@Override
 	public int updateUser(Integer id, UserRequest request) {
-		UserEntity user = new UserEntity(id, request.getName(), request.getAge(), request.getSex());
-		return userMapper.updateOne(user);
+//		UserEntity user = new UserEntity(id, request.getName(), request.getAge(), request.getSex());
+		return 1;
 	}
 
 	@Override
@@ -93,7 +94,5 @@ public class UserServiceImpl implements UserService {
 		});
 
 		getHero(new ArrayList<Hero>(), (t)->t.getStature() > 170 && "刺客".equals(t.getType()));
-
-
 	}
 }
