@@ -1,7 +1,5 @@
 package cn.ebing.dog.api.utils;
 
-import sun.misc.BASE64Encoder;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -33,24 +31,6 @@ public class MD5Util {
             e.printStackTrace();
         }
         return s;
-    }
-
-    /**
-     * 将数据进行 MD5 加密，并以16进制字符串格式输出
-     * @param data
-     * @return
-     */
-    public static String md5(String data) {
-        try {
-            MessageDigest md5=MessageDigest.getInstance("MD5");
-            BASE64Encoder base64en = new BASE64Encoder();
-            //加密后的字符串
-            return base64en.encode(md5.digest(data.getBytes("utf-8")));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
-
     }
 
     public static String getMD5(String plainText, int length) {

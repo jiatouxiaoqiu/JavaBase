@@ -1,7 +1,10 @@
 package cn.ebing.dog.api.test.threadpool;
 
-import com.google.common.util.concurrent.*;
-import com.sun.istack.internal.Nullable;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +20,7 @@ public class JDKThreadPoolExecutorTest2 {
 		});
 		Futures.addCallback(listenableFuture, new FutureCallback<String>() {
 			@Override
-			public void onSuccess(@Nullable String result) {
+			public void onSuccess(String result) {
 				System.out.println(Thread.currentThread().getName()+"-future的内容:" + result);
 			}
 

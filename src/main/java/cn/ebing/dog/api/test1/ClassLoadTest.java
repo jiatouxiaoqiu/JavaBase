@@ -10,5 +10,6 @@ public class ClassLoadTest {
         // 因此反射会触发类加载
         Class.forName("cn.ebing.dog.api.test1.ClassLoadStaticReflect");
 
+        // 虚拟机启动时，定义了main()方法的那个类先初始化
     }
 }
