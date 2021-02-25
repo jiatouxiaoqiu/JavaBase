@@ -1,5 +1,7 @@
 package cn.ebing.dog.api.test;
 
+import org.apache.commons.collections.CollectionUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class FinallyTest {
 //            System.out.println("finally3-> " + i + "; ints.length ->" + f3.length);
 //        }
         arrayList();
+        CollectionUtils.intersection(null,null);
     }
 
     static int finally1() {
