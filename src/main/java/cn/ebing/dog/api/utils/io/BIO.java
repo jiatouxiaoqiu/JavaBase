@@ -16,6 +16,8 @@ public class BIO {
    * 所以要序列化
    */
   public static class User implements Serializable {
+      private static final long serialVersionUID = 2L;
+
         private String name;
         private String sex;
 
@@ -79,7 +81,7 @@ public class BIO {
 
     public static void main(String[] args) {
         String filepath = "/Users/mx/Documents/java/dog_api/src/main/java/cn/ebing/dog/api/utils/io/bio.text";
-        writeFile(filepath);
+//        writeFile(filepath);
         readFile(filepath);
     }
 }
