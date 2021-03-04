@@ -19,6 +19,9 @@ import java.util.concurrent.TimeUnit;
  * 1、使用局部变量
  * 2、加同步锁
  * 3 使用 ThreadLocal
+ * 4 DateTimeFormatter,java8 里面的线程安全类
+ *
+ * 所以，当我们要表示日期的时候，一定要使用 yyyy-MM-dd 而不是 YYYY-MM- dd ，这两者的返回结果大多数情况下都一样，但是极端情况就会有问题了。
  */
 public class SimpleDateFormatTest {
     /*** 定义一个全局的 SimpleDateFormat */
