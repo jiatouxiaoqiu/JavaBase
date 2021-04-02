@@ -2,10 +2,12 @@ package cn.ebing.dog.api.test;
 
 public class StringTest {
 
-	/**
-	 * 这里必须是 static ，只有这样，才比 main 更早 Classlaoder 到 JVM 中
-	 */
-	private static String a = "xxx";
+  /**
+   * 这里必须是 static ，只有这样，才比 main 更早 Classlaoder 到 JVM 中 只有 java 的时候是 false，其他都是 true java 出来就有，继承自
+   * sun.misc.Version rt.jar 直接 bootstrap 后，我们就可以直接用 String Object 而不需要 import rt == runtime 我草。。。
+   * openJDK源码下载
+   */
+  private static String a = "xxx";
 
 	public static void main(String[] args) {
 
