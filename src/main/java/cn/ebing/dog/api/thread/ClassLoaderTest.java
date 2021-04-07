@@ -15,7 +15,6 @@ public class ClassLoaderTest {
       ClassLoader classLoader = Provider.class.getClassLoader();
       System.out.println("classLoader ->" + classLoader);
 
-
       String extDirs = System.getProperty("java.ext.dirs");
       for (String dir: extDirs.split(";")) {
           System.out.println("dir ->" + dir);
