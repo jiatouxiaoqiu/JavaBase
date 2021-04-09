@@ -2,15 +2,14 @@ package cn.ebing.dog.api.thread;
 
 import sun.security.ec.CurveDB;
 
-import java.net.URL;
 import java.security.Provider;
 
 public class ClassLoaderTest {
   public static void main(String[] args) {
-      URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
-      for (URL url: urls) {
-          System.out.println("url ->" + url);
-      }
+//      URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
+//      for (URL url: urls) {
+//          System.out.println("url ->" + url);
+//      }
       // Bootstrap so is null
       ClassLoader classLoader = Provider.class.getClassLoader();
       System.out.println("classLoader ->" + classLoader);

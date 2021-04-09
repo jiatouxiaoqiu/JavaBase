@@ -4,7 +4,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 一个线程池中的线程异常了，那么线程池会怎么处理这个线程?
@@ -27,14 +26,14 @@ public class ExecutorsTest {
 		throw new RuntimeException(printStr + ",异常啦");
 	}
 
-	private static ThreadPoolTaskExecutor buildThreadPoolTaskExecutor() {
+	public static ThreadPoolTaskExecutor buildThreadPoolTaskExecutor() {
 		ThreadPoolTaskExecutor executorService = new ThreadPoolTaskExecutor();
 		executorService.setThreadNamePrefix("dog_api_thread_name-");
 		executorService.setCorePoolSize(5);
 		executorService.setMaxPoolSize(10);
 		executorService.setQueueCapacity(1000);
 		executorService.setKeepAliveSeconds(30);
-		executorService.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+//		executorService.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
 		executorService.initialize();
 		return executorService;
 	}
