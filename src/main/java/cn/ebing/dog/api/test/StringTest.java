@@ -9,12 +9,25 @@ public class StringTest {
    */
   private static String a = "xxx";
 
+	String string = new String("aa"); // s 是指向
+	char[] chars = {'t','e','s','t'};
+
+	public void change(String string, char[] chars) {
+		string = "ok";
+		chars[0] = 'b';
+	}
+
 	public static void main(String[] args) {
+		StringTest stringTest = new StringTest();
+		System.out.println(stringTest.string);
+		System.out.println(stringTest.chars);
 
 		System.out.println(a);
 
 		//创建了两个对象，一份存在字符串常量池中，一份存在堆中
 		String s = new String("aa"); // s 是指向
+		char[] chars = {'t','e','s','t'};
+
 		//检查常量池中是否存在字符串aa，此处存在则直接返回
 		String s1 = s.intern();
 		String s2 = "aa";
