@@ -74,5 +74,26 @@ public class RingQueue {
         System.out.println("getSize: " + ringQueue.getSize());
         System.out.println("======");
         ringQueue.showQueue();
+
+        /**
+         * 使用快慢指针，快指针每次走2步，慢指针每次走1步，如果快指针追上了慢指针，则说明存在环
+         */
+//        public boolean hasCycle(ListNode head) {
+//            if (head == null || head.next == null) {
+//                return false;
+//            }
+//
+//            ListNode fast = head;
+//            ListNode slow = head;
+//            while (fast != null && fast.next != null) {
+//                fast = fast.next.next;
+//                slow = slow.next;
+//                if (fast == slow) {
+//                    return true;
+//                }
+//            }
+//
+//            return false;
+//        }
     }
 }

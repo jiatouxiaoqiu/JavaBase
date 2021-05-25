@@ -15,9 +15,13 @@ public class BinarySearchTree {
     public TreeNode find(int data) {
         TreeNode p = tree;
         while (p != null) {
-            if (data < p.data) p = p.left;
-            else if (data > p.data) p = p.right;
-            else return p;
+            if (data < p.data) {
+                p = p.left;
+            } else if (data > p.data) {
+                p = p.right;
+            } else {
+                return p;
+            }
         }
         return null;
     }
@@ -96,20 +100,28 @@ public class BinarySearchTree {
     }
 
     public TreeNode findMax() {
-        if (tree == null) return null;
+        if (tree == null) {
+            return null;
+        }
+
         TreeNode p = tree;
         while (p.right != null) {
             p = p.right;
         }
+
         return p;
     }
 
+    /**
+     * 中序遍历：中左右
+     * @param node
+     */
     public void InOrderTraverse(TreeNode node) {
         if (node == null) {
             return;
         }
         InOrderTraverse(node.left);
-        System.out.print(node.data + " ");
+        System.out.print("InOrderTraverse: " + node.data + " ");
         InOrderTraverse(node.right);
     }
 }

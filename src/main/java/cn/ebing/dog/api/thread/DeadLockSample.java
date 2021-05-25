@@ -32,7 +32,12 @@ public class DeadLockSample extends Thread {
 		}
 	}
 
-
+	/**
+	 * 1 jps
+	 * 2 jstack [pid]
+	 *
+	 * 如果知道死锁。1、用上面的Java 命令。2、用 ThreadMXBean 的 Java代码扫描。然后每10秒进行一次死锁扫描
+	 */
 	public static void main(String[] args) throws InterruptedException {
 		ThreadMXBean mbean = ManagementFactory.getThreadMXBean();
 		Runnable dlCheck = new Runnable() {
@@ -64,7 +69,11 @@ public class DeadLockSample extends Thread {
 		 */
 		t1.start();
 		t2.start();
-		t1.join();
+    /**
+     * https://www.jianshu.com/p/ff637be3b671 线程的合并的含义就是 将几个并行线程的线程合并为一个单线程执行，应用场景是
+     * 当一个线程必须等待另一个线程执行完毕才能执行时，Thread类提供了join方法来完成这个功能，注意，它不是静态方法。
+     */
+    t1.join();
 		t2.join();
 	}
 }

@@ -28,23 +28,30 @@ public class TreeTest {
 
 
     public static void main(String[] args) {
-        TreeNode treeNode = buildTree();
-        // 预计结果: 1 2 4 7 3 5 6 8
-        BinaryTree.preOrder(treeNode);
-        System.out.println();
-        // 预计结果:4 7 2 1 5 3 8 6
-        BinaryTree.inOrder(treeNode);
-        System.out.println();
-        // 预计结果: 7 4 2 5 8 6 3 1
-        BinaryTree.postOrder(treeNode);
-        System.out.println();
+        /**
+         * 二叉树
+         */
+//        TreeNode treeNode = buildTree();
+//        // 预计结果: 1 2 4 7 3 5 6 8
+//        BinaryTree.preOrder(treeNode);
+//        System.out.println();
+//        // 预计结果:4 7 2 1 5 3 8 6
+//        BinaryTree.inOrder(treeNode);
+//        System.out.println();
+//        // 预计结果: 7 4 2 5 8 6 3 1
+//        BinaryTree.postOrder(treeNode);
+//        System.out.println();
+
+        /**
+         * 二叉搜索树
+         */
         int[] a = { 62, 88, 58, 47, 35, 73, 51, 99, 37, 93, 36, 39, 42, 62 };
         BinarySearchTree binarySortTree = new BinarySearchTree();
         for (int i = 0; i < a.length; i++) {
             binarySortTree.insert(a[i]);
         }
-        System.out.println(binarySortTree.findMax().data);
-        System.out.println(binarySortTree.find(62));
+        System.out.println("findMax: " + binarySortTree.findMax().data);
+        System.out.println("find: " + binarySortTree.find(62));
         binarySortTree.InOrderTraverse(binarySortTree.tree);
     }
 }

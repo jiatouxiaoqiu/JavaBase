@@ -23,13 +23,13 @@ public class BinaryTree {
         inOrder(root.right);
     }
 
-    // 中序遍历 先打印左节点，本身，右节点
+    // 后序遍历 先打印左节点，右节点，本身
     public static void postOrder(TreeNode root) {
         if (root == null) {
             return;
         }
         postOrder(root.left);
         postOrder(root.right);
-        System.out.print(root.data + " ");
+        System.out.print("postOrder:"+ root.data + " ");
     }
 }
