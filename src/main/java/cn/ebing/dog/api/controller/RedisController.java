@@ -1,6 +1,5 @@
 package cn.ebing.dog.api.controller;
 
-import cn.ebing.dog.api.utils.lock.RedisLockUtil;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/redis")
@@ -64,12 +62,12 @@ public class RedisController {
 		@RequestParam Boolean isLock,
 		@RequestParam Boolean isUnlock
 	) {
-		if (isLock) {
-			RedisLockUtil.lock("generateKey");
-		}
-		if (isUnlock) {
-			RedisLockUtil.unlock("generateKey");
-		}
+//		if (isLock) {
+//			RedisLockUtil.lock("generateKey");
+//		}
+//		if (isUnlock) {
+//			RedisLockUtil.unlock("generateKey");
+//		}
 		return "success";
 	}
 
@@ -78,17 +76,17 @@ public class RedisController {
 	 */
 	private void testLockCount() {
 		String lockKey = "lock-test";
-		try {
-			// 加锁，设置超时时间2s
-			RedisLockUtil.lock(lockKey,2, TimeUnit.SECONDS);
-			lockCount--;
-			logger.info("lockCount值："+lockCount);
-		}catch (Exception e){
-			logger.error(e.getMessage(),e);
-		}finally {
-			// 释放锁
-			RedisLockUtil.unlock(lockKey);
-		}
+//		try {
+//			// 加锁，设置超时时间2s
+//			RedisLockUtil.lock(lockKey,2, TimeUnit.SECONDS);
+//			lockCount--;
+//			logger.info("lockCount值："+lockCount);
+//		}catch (Exception e){
+//			logger.error(e.getMessage(),e);
+//		}finally {
+//			// 释放锁
+//			RedisLockUtil.unlock(lockKey);
+//		}
 	}
 
 	/**

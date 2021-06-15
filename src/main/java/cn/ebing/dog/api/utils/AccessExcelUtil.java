@@ -7,12 +7,17 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccessExcelUitl {
+public class AccessExcelUtil {
+
+	private final static Logger logger = LoggerFactory.getLogger(AccessExcelUtil.class);
 
 	public static List<List<String>> readExcel(String sourceFilePath) {
 		Workbook workbook = null;
@@ -21,14 +26,43 @@ public class AccessExcelUitl {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		List<List<String>> result = new ArrayList<List<String>>();
 
-		//获取第一个sheet
-		Sheet sheet = workbook.getSheetAt(0);
+		int sheetNumber = workbook.getNumberOfSheets();
+		for (int i = 2; i< sheetNumber; i++) {
+			Sheet sheet = workbook.getSheetAt(i);
+			int maxRow = sheet.getPhysicalNumberOfRows();
+			int maxCol = sheet.getRow(0).getPhysicalNumberOfCells();
+			logger.info("i: " + i + "; maxRow: " + maxRow + "; maxCol: " + maxCol + "; name: " + sheet.getSheetName());
+			for (int rowNum = 1; rowNum < maxRow; rowNum++) {
+				Row row = sheet.getRow(rowNum);
+				List<String> rows = new ArrayList<String>();
+				for (int col = 0; col < maxCol; col++) {
+					Cell cell = row.getCell(col);
+					rows.add(getCellValue(cell));
+				}
+				result.add(rows);
+			}
+    	}
 
+		return result;
+	}
+
+	public static List<List<String>> readExcel(String sourceFilePath, int sheetIndex) {
+		Workbook workbook = null;
+		try {
+			workbook = getReadWorkBookType(sourceFilePath);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		List<List<String>> result = new ArrayList<List<String>>();
+
+		Sheet sheet = workbook.getSheetAt(sheetIndex);
 		int maxRow = sheet.getPhysicalNumberOfRows();
 		int maxCol = sheet.getRow(0).getPhysicalNumberOfCells();
-
+		logger.info("maxRow: " + maxRow + "; maxCol: " + maxCol + "; name: " + sheet.getSheetName());
 		for (int rowNum = 1; rowNum < maxRow; rowNum++) {
 			Row row = sheet.getRow(rowNum);
 			List<String> rows = new ArrayList<String>();
@@ -38,6 +72,7 @@ public class AccessExcelUitl {
 			}
 			result.add(rows);
 		}
+
 		return result;
 	}
 
@@ -81,6 +116,7 @@ public class AccessExcelUitl {
 		}
 		String value = "";
 		switch (cell.getCellType()) {
+			case Cell.CELL_TYPE_NUMERIC: value = String.valueOf(cell.getNumericCellValue()); break;
 			case Cell.CELL_TYPE_BLANK: value = ""; break;
 			case Cell.CELL_TYPE_FORMULA: value = String.valueOf(cell.getNumericCellValue()); break;
 			case Cell.CELL_TYPE_STRING: value = cell.getStringCellValue(); break;

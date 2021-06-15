@@ -73,7 +73,11 @@ dependencies {
     compile 'top.crossoverjie.opensource:distributed-redis-tool:1.0.4'
     compile 'org.redisson:redisson'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '1.5.9.RELEASE'
-    compile 'com.alibaba:easyexcel:2.2.6'
+
+    compile 'com.alibaba:easyexcel:2.2.5'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.17'
 
     compile 'cn.keking:spring-boot-klock-starter:1.4-RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '1.5.9.RELEASE'
@@ -83,9 +87,6 @@ dependencies {
     compile group: 'org.flywaydb', name: 'flyway-core', version: '5.0.7'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.9.2'
     compile group: 'net.sourceforge.jexcelapi', name: 'jxl', version: '2.6.12'
-    compile group: 'org.apache.poi', name: 'poi', version: '3.11'
-    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.11'
-    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.11'
     compile(group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.2.5') {
         exclude(module: 'commons-logging')
     }
