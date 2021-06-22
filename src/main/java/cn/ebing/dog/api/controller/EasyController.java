@@ -6,7 +6,9 @@ import com.crossoverjie.distributed.annotation.SpringControllerLimit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.klock.annotation.Klock;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +28,19 @@ public class EasyController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@Autowired
+	ApplicationContext applicationContext;
+
+	/**
+	 * @time 2021年06月22日16:11:55
+	 * 避免和 系统变量、环境变量 冲突，最好的方法是加 prefix, 比如 dogUser.username; 这样
+	 */
+	@Value("${username}")
+	String username;
+
+	@Value("${password}")
+	String password;
+
 	private static final ThreadLocal<DateFormat> df = new ThreadLocal<DateFormat>() {
 		@Override
 		protected DateFormat initialValue() {
@@ -38,6 +53,12 @@ public class EasyController {
 
 	@Autowired
 	private AsyncTask asyncTask;
+
+	@ResponseBody
+	@GetMapping("/value")
+	public String valueTest() {
+		return "username: " + username + "; password: " + password;
+	}
 
 	@ResponseBody
 	@GetMapping("/asyncTask")
