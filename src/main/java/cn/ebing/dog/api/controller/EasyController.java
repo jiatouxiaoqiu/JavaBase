@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.klock.annotation.Klock;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -124,5 +125,27 @@ public class EasyController {
 		System.out.println("getParameter   " + request.getParameter("add2space"));
 
 		return "success";
+	}
+
+	/**
+	 * @time 2021年06月23日10:19:08
+	 *  name include /
+	 *  需要看的是URL的匹配逻辑
+	 *
+	 *  2021年06月23日11:01:10
+	 *
+	 *  HttpHeader 里面可以用map
+	 *  1、在http协议里面，header是忽略大小写的
+	 *  2、在 java spring 框架的实现里面，如果直接用 header kv 的，是可以忽略大小写；如果用的map，是不忽略的、
+	 *  也就是说，协议和实现，是两回事。然后在 其他语言来看，也是一样的。需要看具体实现逻辑
+	 *
+	 *  看到用 {@link org.springframework.util.LinkedCaseInsensitiveMap 就有点神奇啊 }
+	 */
+	@ResponseBody
+	@PostMapping("/name/{name}")
+	public String includeSpecialName(
+			@PathVariable String name
+	) {
+		return name;
 	}
 }

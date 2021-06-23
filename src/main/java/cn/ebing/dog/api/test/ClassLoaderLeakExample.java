@@ -40,7 +40,7 @@ public final class ClassLoaderLeakExample {
 
     /**
      * 线程的实现只是循环调用
-     * {@link #loadAndDiscard()}
+     * {@link #loadAndDiscard }
      */
     static final class LongRunningThread extends Thread {
         @Override public void run() {

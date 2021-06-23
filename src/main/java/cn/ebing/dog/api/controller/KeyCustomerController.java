@@ -41,7 +41,13 @@ public class KeyCustomerController {
         List<List<String>> buyUnitPriceSheets = AccessExcelUtil.readExcel(filename, 0);
         List<KeyCustomerEntity> entities = new ArrayList<>();
         buyUnitPriceSheets.forEach(content -> {
-            KeyCustomerEntity entity = converter.toEntityInBuyUnitPrice(content);
+            /**
+             * @time 2021年06月22日16:54:34
+             *
+             * 噢噢噢，this.converter == converter 啊，this 代表 KeyCustomerController 这个上下文的吧,神奇
+             * this 代表当前对象
+             */
+            KeyCustomerEntity entity = this.converter.toEntityInBuyUnitPrice(content);
             entities.add(entity);
         });
 
