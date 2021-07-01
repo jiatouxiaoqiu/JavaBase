@@ -61,6 +61,16 @@ public class EasyController {
 		return "username: " + username + "; password: " + password;
 	}
 
+
+	@ResponseBody
+	@GetMapping("/hash")
+	public int hash(
+		@RequestParam String key
+	) {
+		int h;
+		return  (h = key.hashCode()) ^ (h >>> 16);
+	}
+
 	@ResponseBody
 	@GetMapping("/asyncTask")
 	public String asyncTask(
