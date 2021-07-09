@@ -3,6 +3,7 @@ package cn.ebing.dog.api.controller;
 import cn.ebing.dog.api.config.threadpool.AsyncTask;
 import cn.ebing.dog.api.thread.RedisLockThread;
 import com.crossoverjie.distributed.annotation.SpringControllerLimit;
+import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
