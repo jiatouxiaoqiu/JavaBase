@@ -44,7 +44,6 @@ public class UserController {
 	public Integer add(
 		@RequestBody UserRequest request
 	) {
-		System.out.println("-- 新增 user 接口请求开始 --");
 		return userService.saveUser(request);
 	}
 

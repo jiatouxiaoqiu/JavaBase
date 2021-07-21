@@ -3,11 +3,24 @@ package cn.ebing.dog.api.test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 2021年07月15日17:06:50
+ * 不是自己写的代码，一点感觉都没有，5个月之后回头看，依旧是重新来，淦
+ *
+ * 新增：
+ * 主要理解
+ * 1、泛型类、泛型方法、泛型接口，都是怎么定义的；T 定义含义
+ * 2、泛型通配符，extends super ，上限、下限，使用含义；泛型解决不了的
+ * 3、类型擦除
+ *
+ */
+
 class Fruit{
     public int getWeigth(){
         return 0;
     }
 }
+
 //Apple是水果Fruit类的子类
 class Apple extends Fruit {
     @Override
@@ -27,6 +40,11 @@ public class GenericTest {
         return weight;
     }
 
+    /**
+     * 上限
+     * @param fruits
+     * @return
+     */
     static int sumWeight1(List<? extends Fruit> fruits) {
         int weight = 0;
         for (Fruit fruit : fruits) {

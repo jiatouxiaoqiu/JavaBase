@@ -57,4 +57,10 @@ public class UserEntity implements Serializable {
 	public void setCreateTime(LocalDateTime createTime) {
 		this.createTime = createTime;
 	}
+
+	public UserEntity(String name, Integer age, Boolean sex) {
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+	}
 }

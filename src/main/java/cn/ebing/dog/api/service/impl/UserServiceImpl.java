@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userMapper;
+
+	@Autowired
+	private UserService userService;
 
 	@Override
 	public UserResponse getUserById(Integer id) {
@@ -47,9 +51,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int saveUser(UserRequest request) {
-//		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
-//		return userMapper.addOne(user);
+		userService.saveUser2(request);
 		return 1;
+	}
+
+	@Override
+	@Transactional
+	public void saveUser2(UserRequest request) {
+		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
+		userMapper.addOne(user);
+		throw new Error();
 	}
 
 	@Override

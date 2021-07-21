@@ -13,4 +13,5 @@ public interface UserService {
 	UserResponse getUserById(Integer id);
 	void deleteUserById(Integer id);
 	void heroTest();
+	void saveUser2(UserRequest request);
 }
