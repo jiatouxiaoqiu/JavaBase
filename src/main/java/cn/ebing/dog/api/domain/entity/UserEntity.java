@@ -1,18 +1,20 @@
 package cn.ebing.dog.api.domain.entity;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
-public class UserEntity implements Serializable {
+public class UserEntity {
 
 	private static final long serialVersionUID = 1L;
+
+	public UserEntity() {
+	}
 
 	private Integer id;
 	private String name;
 	private Integer age;
 	private Boolean sex;
-	private LocalDateTime createTime;
-	private LocalDateTime updateTime;
+//	private LocalDateTime createTime;
+//	private LocalDateTime updateTime;
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
@@ -50,13 +52,13 @@ public class UserEntity implements Serializable {
 		this.sex = sex;
 	}
 
-	public LocalDateTime getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(LocalDateTime createTime) {
-		this.createTime = createTime;
-	}
+//	public LocalDateTime getCreateTime() {
+//		return createTime;
+//	}
+//
+//	public void setCreateTime(LocalDateTime createTime) {
+//		this.createTime = createTime;
+//	}
 
 	public UserEntity(String name, Integer age, Boolean sex) {
 		this.name = name;
