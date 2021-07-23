@@ -1,6 +1,6 @@
 package cn.ebing.dog.api.domain.entity;
 
-//import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 public class UserEntity {
 
@@ -13,8 +13,8 @@ public class UserEntity {
 	private String name;
 	private Integer age;
 	private Boolean sex;
-//	private LocalDateTime createTime;
-//	private LocalDateTime updateTime;
+	private LocalDateTime createTime;
+	private LocalDateTime updateTime;
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;

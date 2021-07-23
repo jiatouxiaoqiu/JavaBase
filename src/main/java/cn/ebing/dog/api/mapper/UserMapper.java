@@ -3,7 +3,7 @@ package cn.ebing.dog.api.mapper;
 import cn.ebing.dog.api.domain.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
-//import cn.ebing.dog.api.domain.query.UserQuery;
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
@@ -11,5 +11,5 @@ public interface UserMapper {
 	int updateOne(UserEntity entity);
 	void deleteById(Integer id);
 	UserEntity getById(Integer id);
-//	List<UserEntity> listByQuery(UserQuery query);
+	List<UserEntity> listByQuery(UserQuery query);
 }
