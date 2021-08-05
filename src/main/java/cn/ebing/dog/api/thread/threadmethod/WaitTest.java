@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 首先，它们都是Object类中的方法。需要配合 Synchronized关键字来使用。
- * 调用线程的wait方法会使当前线程等待，直到其它线程调用此对象的notify/notifyAll方法。如果，当前对象锁有N个线程在等待，则notify方法会随机唤醒其中一个线程，而notifyAll会唤醒对象锁中所有的线程。需要注意，唤醒时，不会立马释放锁，只有当前线程执行完之后，才会把锁释放。
+ * 首先，它们都是Object类中的方法。需要配合 Synchronized 关键字来使用。
+ * 调用线程的wait方法会使当前线程等待，直到其它线程调用此对象的 notify/notifyAll 方法。
+ * 如果，当前对象锁有N个线程在等待，则notify方法会【随机唤醒】其中一个线程，而notifyAll会唤醒对象锁中所有的线程。
+ * 需要注意，唤醒时，不会立马释放锁，只有当前线程执行完之后，才会把锁释放。
  * 另外，wait方法和sleep方法不同之处，在于sleep方法不会释放锁，而wait方法会释放锁。
  * yield方法和sleep方法一样，也是不释放锁资源的
+ *
+ * 又有了新的理解
+ *
+ * 2021年08月05日15:15:04
+ *
+ * wait/notify等方法也依赖于monitor对象
+ * 这就是为什么只有在同步的块或者方法中才能调用wait/notify等方法，否则会抛出java.lang.IllegalMonitorStateException的异常的原因。
  */
 
 /**

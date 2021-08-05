@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
 	public UserResponse getUserById(Integer id) {
 		logger.debug("开始进行 getUserById");
 		UserEntity user = userMapper.getById(id);
+		UserEntity user2 = new UserEntity();
 		if (user == null) {
 			throw new RuntimeException("USER 不存在----");
 		}
@@ -51,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int saveUser(UserRequest request) {
-		userService.saveUser2(request);
+		saveUser2(request);
 		return 1;
 	}
 
@@ -60,7 +61,6 @@ public class UserServiceImpl implements UserService {
 	public void saveUser2(UserRequest request) {
 		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
 		userMapper.addOne(user);
-		throw new Error();
 	}
 
 	@Override
