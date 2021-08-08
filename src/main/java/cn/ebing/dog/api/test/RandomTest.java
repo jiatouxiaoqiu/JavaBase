@@ -71,8 +71,21 @@ public class RandomTest {
 		return String.valueOf(randomNum);
 	}
 
-	/** 订单号生成(NEW) **/
-	private static final AtomicInteger SEQ = new AtomicInteger(1000);
+  /**
+   * 在 JUC 里面，有一些计算是用的 atomic 的，
+   * 在业务中，这个原子类在哪里用呢？如果用了 Atomic ，说明数据维护是在 单机的，不是分布式的，那就一般在 生产者消费者模型里面了，或者线程池里面的一些计算统计等等。
+   *
+   * 订单号生成(NEW)
+   *
+   * <p>在高并发情况下，需要相对高的性能，同时数据准确性要求不高，可以考虑使用 LongAdder。
+   * <p>当要保证线程安全，并允许一定的性能损耗时，并对数据准确性要求较高，优先使用 AtomicLong。
+   *
+   * 在介绍 AtomicInteger 时，已经说明在高并发下大量线程去竞争更新同一个原子变量时，因为只有一个线程能够更新成功，其他的线程在竞争失败后，只能一直循环，不断的进行 CAS 尝试，从而浪费了 CPU 资源。
+   * 而在 JDK 8 中新增了 LongAdder 用来解决高并发下变量的原子操作。下面同样通过阅读源码来了解 LongAdder 。
+   * <p>*
+   */
+  private static final AtomicInteger SEQ = new AtomicInteger(1000);
+
 	private static final DateTimeFormatter DF_FMT_PREFIX = DateTimeFormatter.ofPattern("yyMMddHHmmssSS");
 	private static ZoneId ZONE_ID = ZoneId.of("Asia/Shanghai");
 	public static String generateOrderNo(){
