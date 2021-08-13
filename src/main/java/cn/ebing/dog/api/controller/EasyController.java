@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutorService;
@@ -157,5 +158,15 @@ public class EasyController {
 			@PathVariable String name
 	) {
 		return name;
+	}
+
+	@ResponseBody
+	@PostMapping("/encode")
+	public String encode(
+			HttpServletRequest request
+	) {
+		String fileUrl = request.getParameter("fileUrl");
+		String decode = URLDecoder.decode(fileUrl);
+		return "";
 	}
 }
