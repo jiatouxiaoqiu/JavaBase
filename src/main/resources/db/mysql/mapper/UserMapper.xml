@@ -28,6 +28,9 @@
         FROM
         <include refid="tableName"/>
         WHERE `id` = #{id}
+        <if test="age != null">
+            and `age` = #{age}
+        </if>
     </select>
 
     <select id="listByQuery" resultMap="entityMap">

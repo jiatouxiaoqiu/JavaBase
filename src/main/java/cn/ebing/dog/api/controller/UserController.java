@@ -2,14 +2,21 @@ package cn.ebing.dog.api.controller;
 
 import cn.ebing.dog.api.domain.entity.UserEntity;
 import cn.ebing.dog.api.domain.request.UserRequest;
-import cn.ebing.dog.api.domain.response.UserResponse;
 import cn.ebing.dog.api.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,11 +32,15 @@ public class UserController {
 
 	@ResponseBody
 	@GetMapping("/{user_id}")
-	public UserResponse getById(
-			@PathVariable("user_id") Integer userId
+	public UserEntity getById(
+			@PathVariable("user_id") Integer userId,
+			@RequestParam(required = false) Integer age
 	) {
-		logger.debug("== 查询单个用户接口 ==");
-		return userService.getUserById(userId);
+		if (age == null) {
+			return userService.getUserById(userId);
+		}
+		return userService.getUser(userId, age);
+
 	}
 
 	@ResponseBody

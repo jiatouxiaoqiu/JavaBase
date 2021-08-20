@@ -4,7 +4,6 @@ import cn.ebing.dog.api.domain.business.Hero;
 import cn.ebing.dog.api.domain.entity.UserEntity;
 import cn.ebing.dog.api.domain.query.UserQuery;
 import cn.ebing.dog.api.domain.request.UserRequest;
-import cn.ebing.dog.api.domain.response.UserResponse;
 import cn.ebing.dog.api.mapper.UserMapper;
 import cn.ebing.dog.api.service.UserService;
 import org.slf4j.Logger;
@@ -30,15 +29,17 @@ public class UserServiceImpl implements UserService {
 	private UserService userService;
 
 	@Override
-	public UserResponse getUserById(Integer id) {
-		logger.debug("开始进行 getUserById");
+	public UserEntity getUserById(Integer id) {
 		UserEntity user = userMapper.getById(id);
-		UserEntity user2 = new UserEntity();
 		if (user == null) {
 			throw new RuntimeException("USER 不存在----");
 		}
-		logger.debug("找到了数据，准备返回");
-		return null;
+		return user;
+	}
+
+	@Override
+	public UserEntity getUser(Integer id, Integer age) {
+		return userMapper.getById(id, age);
 	}
 
 	@Override
