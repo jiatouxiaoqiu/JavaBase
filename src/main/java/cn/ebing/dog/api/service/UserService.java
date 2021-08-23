@@ -10,6 +10,8 @@ public interface UserService {
 	int updateUser(Integer id, UserRequest request);
 	List<UserEntity> listUsers();
 
+	List<Integer> insertMany(List<UserRequest> userRequests);
+
 	UserEntity getUserById(Integer id);
 	UserEntity getUser(Integer id, Integer age);
 

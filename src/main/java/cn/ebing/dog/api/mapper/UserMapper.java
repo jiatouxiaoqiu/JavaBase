@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 	int addOne(UserEntity entity);
+	int insertMany(List<UserEntity> entities);
 	int updateOne(UserEntity entity);
 	void deleteById(Integer id);
 

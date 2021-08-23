@@ -58,6 +58,16 @@
         )
     </insert>
 
+    <insert id="insertMany" useGeneratedKeys="true" keyProperty="id" parameterType="List">
+        INSERT INTO
+        <include refid="tableName"/>
+        (`sex`, `age`, `name`)
+        VALUES
+        <foreach item="it" index="index" collection="list" open="" separator="," close="">
+            (#{it.sex}, #{it.age}, #{it.name})
+        </foreach>
+    </insert>
+
     <update id="updateOne" parameterType="UserEntity">
         UPDATE
         <include refid="tableName"/>

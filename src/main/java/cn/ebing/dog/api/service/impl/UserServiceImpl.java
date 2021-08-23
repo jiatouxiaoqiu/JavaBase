@@ -1,5 +1,6 @@
 package cn.ebing.dog.api.service.impl;
 
+import cn.ebing.dog.api.converter.UserConverter;
 import cn.ebing.dog.api.domain.business.Hero;
 import cn.ebing.dog.api.domain.entity.UserEntity;
 import cn.ebing.dog.api.domain.query.UserQuery;
@@ -14,8 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,6 +27,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userMapper;
+
+	@Autowired
+	private UserConverter converter;
 
 	@Autowired
 	private UserService userService;
@@ -53,8 +59,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int saveUser(UserRequest request) {
-		saveUser2(request);
-		return 1;
+		/**
+		 * 主键id，可以在xml配置后，可以通过 user.getId拿到。
+		 * addOne xml 的返回值，是影响行数，插入1条，result == 1
+		 */
+		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
+		int id = userMapper.addOne(user);
+		return id;
 	}
 
 	@Override
@@ -106,5 +117,26 @@ public class UserServiceImpl implements UserService {
 		});
 
 		getHero(new ArrayList<Hero>(), (t)->t.getStature() > 170 && "刺客".equals(t.getType()));
+	}
+
+	@Override
+	public List<Integer> insertMany(List<UserRequest> userRequests) {
+		if (userRequests.isEmpty()) {
+			return Collections.EMPTY_LIST;
+		}
+		/**
+		 * 前提要求：
+		 *
+		 *  1、升级Mybatis版本到3.3.1
+		 * 	2、在mapper.java中不能使用@param注解。
+		 * 	3、Mapper.xml中使用list变量接受Dao中的集合。
+		 * 	4、xxxDao中,也只能传一个LIST参数. 两个参数是不行的
+		 *
+		 * 	获得ids, 就是 entities.stream().map(UserEntity::getId).collect(Collectors.toList());
+		 * 	影响行数就是: total
+		 */
+		List<UserEntity> entities = converter.request2entities(userRequests);
+		int total = userMapper.insertMany(entities);
+		return entities.stream().map(UserEntity::getId).collect(Collectors.toList());
 	}
 }

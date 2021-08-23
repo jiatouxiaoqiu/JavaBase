@@ -40,7 +40,14 @@ public class UserController {
 			return userService.getUserById(userId);
 		}
 		return userService.getUser(userId, age);
+	}
 
+	@ResponseBody
+	@PostMapping("/insert-many")
+	public List<Integer> insertMany(
+			@RequestBody List<UserRequest> list
+	) {
+		return userService.insertMany(list);
 	}
 
 	@ResponseBody
