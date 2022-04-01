@@ -19,13 +19,13 @@ import java.util.concurrent.Executors;
  */
 public class BarrierTest {
 	public static void main(String[] args) {
-		CyclicBarrier barrier = new CyclicBarrier(2);  //①
+		CyclicBarrier barrier = new CyclicBarrier(3);  //①
 		Runner runner1 = new Runner(barrier, "张三");
 		Runner runner2 = new Runner(barrier, "李四");
 		Runner runner3 = new Runner(barrier, "王五");
 		Runner runner6 = new Runner(barrier, "666");
 
-		ExecutorService service = Executors.newFixedThreadPool(2);
+		ExecutorService service = Executors.newFixedThreadPool(4);
 		service.execute(runner1);
 		service.execute(runner2);
 		service.execute(runner3);

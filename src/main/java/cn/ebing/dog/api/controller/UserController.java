@@ -60,9 +60,10 @@ public class UserController {
 	@ResponseBody
 	@PostMapping
 	public Integer add(
-		@RequestBody UserRequest request
+			@RequestParam boolean openError,
+			@RequestBody UserRequest request
 	) {
-		return userService.saveUser(request);
+		return userService.saveUser(request, openError);
 	}
 
 	/**

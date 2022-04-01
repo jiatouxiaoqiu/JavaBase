@@ -6,7 +6,8 @@ import cn.ebing.dog.api.domain.request.UserRequest;
 import java.util.List;
 
 public interface UserService {
-	int saveUser(UserRequest request);
+
+	int saveUser(UserRequest request, boolean openError);
 	int updateUser(Integer id, UserRequest request);
 	List<UserEntity> listUsers();
 

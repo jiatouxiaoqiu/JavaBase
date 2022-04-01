@@ -57,14 +57,22 @@ public class UserServiceImpl implements UserService {
 		return users;
 	}
 
+	/**
+	 * 测试事务，插入这个的时候，再插入其他，然后报错，然后回来。这样的话，主键会浪费吗？
+	 * @param request
+	 * @return
+	 */
+	/**
+	 * 主键id，可以在xml配置后，可以通过 user.getId拿到。
+	 * addOne xml 的返回值，是影响行数，插入1条，result == 1
+	 */
 	@Override
-	public int saveUser(UserRequest request) {
-		/**
-		 * 主键id，可以在xml配置后，可以通过 user.getId拿到。
-		 * addOne xml 的返回值，是影响行数，插入1条，result == 1
-		 */
+	@Transactional
+	public int saveUser(UserRequest request, boolean openError) {
 		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
 		int id = userMapper.addOne(user);
+
+
 		return id;
 	}
 

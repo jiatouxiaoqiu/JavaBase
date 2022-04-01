@@ -29,11 +29,14 @@ spring:
         prepStmtCacheSqlLimit: 1024
         useSSL: false
         useUnicode: true
-mybatis:
+
+mybatis-plus:
   mapper-locations: "db/mysql/mapper/*.xml"
-  type-aliases-package: cn.ebing.dog.api.domain.entity
+  type-aliases-package: com.gmall.jt.api.domain.entity
   configuration:
-      use-actual-param-name: true
+    use-actual-param-name: true
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
 pagehelper:
   helper-dialect: mysql
   support-methods-arguments: true
