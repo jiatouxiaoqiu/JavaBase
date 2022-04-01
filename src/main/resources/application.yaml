@@ -10,7 +10,7 @@ logging:
     cn.ebing.dog: debug
 spring:
   application:
-    name: dog-api
+    name: jiatou
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -38,7 +38,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: "db/mysql/mapper/*.xml"
-  type-aliases-package: com.gmall.jt.api.domain.entity
+  type-aliases-package: cn.ebing.dog.api.domain.entity
   configuration:
     use-actual-param-name: true
     log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
@@ -54,12 +54,12 @@ cors:
       path: "/**"
       allowed-origins: "*"
 
-flyway:
-  enabled: false
-  baseline-on-migrate: true
-  locations: "db/mysql/migration"
-  schemas:
-    - dog
+#flyway:
+#  enabled: false
+#  baseline-on-migrate: true
+#  locations: "db/mysql/migration"
+#  schemas:
+#    - dog
 
 redis:
   limit: 1
