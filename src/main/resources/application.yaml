@@ -41,7 +41,7 @@ mybatis-plus:
   type-aliases-package: cn.ebing.dog.api.domain.entity
   configuration:
     use-actual-param-name: true
-    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 pagehelper:
   helper-dialect: mysql

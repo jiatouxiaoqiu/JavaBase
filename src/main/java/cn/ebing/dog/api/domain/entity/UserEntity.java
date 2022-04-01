@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 
 @TableName("user")
 public class UserEntity {
-
 	private static final long serialVersionUID = 1L;
 
 	public UserEntity() {

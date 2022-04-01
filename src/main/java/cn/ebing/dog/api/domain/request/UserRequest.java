@@ -1,11 +1,8 @@
 package cn.ebing.dog.api.domain.request;
 
 public class UserRequest {
-
 	private String name;
-
 	private Integer age;
-
 	private Boolean sex;
 
 	public void setName(String name) {
