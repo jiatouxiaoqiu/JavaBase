@@ -1,26 +1,23 @@
 package cn.ebing.dog.api.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDateTime;
 
 @TableName("user")
 public class UserEntity {
-	private static final long serialVersionUID = 1L;
 
-	public UserEntity() {
-	}
-
+	@TableId(value = "id",type = IdType.AUTO)
 	private Integer id;
+
 	private String name;
 	private Integer age;
 	private Boolean sex;
 	private LocalDateTime createTime;
 	private LocalDateTime updateTime;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
 
 	public Integer getId() {
 		return id;
@@ -54,13 +51,8 @@ public class UserEntity {
 		this.sex = sex;
 	}
 
-//	public LocalDateTime getCreateTime() {
-//		return createTime;
-//	}
-//
-//	public void setCreateTime(LocalDateTime createTime) {
-//		this.createTime = createTime;
-//	}
+	public UserEntity() {
+	}
 
 	public UserEntity(String name, Integer age, Boolean sex) {
 		this.name = name;

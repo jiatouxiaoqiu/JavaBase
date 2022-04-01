@@ -61,6 +61,8 @@ public class UserServiceImpl implements UserService {
 
 	/**
 	 * 测试事务，插入这个的时候，再插入其他，然后报错，然后回来。这样的话，主键会浪费吗？
+	 * 结果是的，插入了如果报错了，Transactional，回滚的话，ID 是浪费的
+	 *
 	 * @param request
 	 * @return
 	 */
