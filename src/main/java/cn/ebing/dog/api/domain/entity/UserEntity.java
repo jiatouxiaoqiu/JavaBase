@@ -1,7 +1,10 @@
 package cn.ebing.dog.api.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.time.LocalDateTime;
 
+@TableName("user")
 public class UserEntity {
 
 	private static final long serialVersionUID = 1L;

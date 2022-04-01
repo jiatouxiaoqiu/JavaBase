@@ -1,7 +1,10 @@
 package cn.ebing.dog.api.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.time.LocalDateTime;
 
+@TableName("role")
 public class RoleEntity {
 	private Integer id;
 	private String name;

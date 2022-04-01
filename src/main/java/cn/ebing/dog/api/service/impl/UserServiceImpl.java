@@ -5,6 +5,8 @@ import cn.ebing.dog.api.domain.business.Hero;
 import cn.ebing.dog.api.domain.entity.UserEntity;
 import cn.ebing.dog.api.domain.query.UserQuery;
 import cn.ebing.dog.api.domain.request.UserRequest;
+import cn.ebing.dog.api.exception.BaseException;
+import cn.ebing.dog.api.exception.ErrorCodeEnum;
 import cn.ebing.dog.api.mapper.UserMapper;
 import cn.ebing.dog.api.service.UserService;
 import org.slf4j.Logger;
@@ -70,8 +72,10 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public int saveUser(UserRequest request, boolean openError) {
 		UserEntity user = new UserEntity(request.getName(), request.getAge(), request.getSex());
-		int id = userMapper.addOne(user);
-
+		int id = userMapper.insert(user);
+		if (openError) {
+			throw new BaseException(ErrorCodeEnum.SERVICE_ERROR);
+		}
 
 		return id;
 	}

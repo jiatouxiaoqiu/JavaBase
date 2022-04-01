@@ -8,6 +8,7 @@ import java.util.List;
 public interface UserService {
 
 	int saveUser(UserRequest request, boolean openError);
+
 	int updateUser(Integer id, UserRequest request);
 	List<UserEntity> listUsers();
 

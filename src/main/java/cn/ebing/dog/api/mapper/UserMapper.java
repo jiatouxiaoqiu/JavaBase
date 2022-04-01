@@ -2,13 +2,14 @@ package cn.ebing.dog.api.mapper;
 
 import cn.ebing.dog.api.domain.entity.UserEntity;
 import cn.ebing.dog.api.domain.query.UserQuery;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<UserEntity> {
 	int addOne(UserEntity entity);
 	int insertMany(List<UserEntity> entities);
 	int updateOne(UserEntity entity);
