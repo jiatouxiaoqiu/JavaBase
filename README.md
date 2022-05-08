@@ -1,1 +1,1 @@
-dog_api 后端项目，基于 springboot
+基于 springboot 的价投小邱 Java 学习项目
